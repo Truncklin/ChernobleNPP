@@ -20,17 +20,19 @@ public class LoadingSlider : MonoBehaviour
         text.SetActive(true);
     }
 
-    public void SetSliderValue()
+    public void SetSliderValue(Vector3 poztp)
     {
         Debug.Log("work");
         uiSlider.SetActive(true);
-        _slider.value -= Time.deltaTime;
 
-        if (_slider.value <= 0)
+        while (_slider.value<=0)
         {
-            uiSlider.SetActive(false);
-            _teleport.Teleportation();
+            _slider.value -= Time.deltaTime;
+            
         }
+        uiSlider.SetActive(false);
+        _teleport.Teleportation(poztp);
+        
     }
 
     public void DisableText()
