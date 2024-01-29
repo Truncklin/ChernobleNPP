@@ -23,7 +23,7 @@ public class LoadingSlider : MonoBehaviour
     public void SetSliderValue(Vector3 poztp)
     {
         Debug.Log("work");
-        uiSlider.SetActive(true);
+        uiSlider.SetActive(true);   
 
         while (_slider.value<=0)
         {
@@ -32,7 +32,6 @@ public class LoadingSlider : MonoBehaviour
         }
         uiSlider.SetActive(false);
         _teleport.Teleportation(poztp);
-        
     }
 
     public void DisableText()
