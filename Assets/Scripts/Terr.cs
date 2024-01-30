@@ -27,7 +27,6 @@ public class Terr : MonoBehaviour
 
     private void Init()
     {
-        FindObjectOfType<CharacterController>().Terr = this;
         _terr = GetComponent<Terrain>();
         CalcHiInflPrototypeIndexesPerPoint();
     }

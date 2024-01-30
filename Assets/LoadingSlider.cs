@@ -22,15 +22,6 @@ public class LoadingSlider : MonoBehaviour
 
     public void SetSliderValue(Vector3 poztp)
     {
-        Debug.Log("work");
-        uiSlider.SetActive(true);   
-
-        while (_slider.value<=0)
-        {
-            _slider.value -= Time.deltaTime;
-            
-        }
-        uiSlider.SetActive(false);
         _teleport.Teleportation(poztp);
     }
 

@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using BaseClasses;
-using Inventory;
 using Items;
 using UnityEngine;
 
@@ -17,14 +16,9 @@ namespace Unit.Character
 			SaveData saveData = isNewGame ? 
 				new SaveData(spawn.transform.position, Quaternion.identity, 
 					100, new Dictionary<Item, uint>()) : SavePrefs.Load();
-
-			GameObject go = Instantiate(character, spawn.transform.position, saveData.Rotation);
-
-			CharacterController ch = go.GetComponent<CharacterController>();
-			ch.Health.CurrentHealth = (int)saveData.Health;
-			InventoryController.SetItems(saveData.Inventory);
 			
-			virtualCamera.SetActive(true);
+			character.SetActive(true);
+			virtualCamera.SetActive(false);
 			GameStateEvents.GameStarted?.Invoke();
 		}
 	}

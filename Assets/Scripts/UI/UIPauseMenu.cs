@@ -1,6 +1,7 @@
 ﻿using BaseClasses;
 using Input;
 using Inventory;
+using StarterAssets;
 using UnityEngine;
 using UnityEngine.UI;
 using CharacterController = Unit.Character.CharacterController;
@@ -15,6 +16,8 @@ namespace UI
 		private Button saveAndExitButton;
 		[Tooltip("Кнопка Управление.")][SerializeField]
 		private Button instructionsButton;
+		[Tooltip("Персонаж")][SerializeField]
+		private GameObject player;
 
 		private void Start()
 		{
@@ -32,14 +35,17 @@ namespace UI
 			GameTime.Pause();
 			
 			InputManager.PlayerActions.Disable();
+			FirstPersonController controller = player.GetComponent<FirstPersonController>();
+			controller.enabled = false;
 			GameStateEvents.GamePaused?.Invoke();
 		}
 
 		protected override void OnDisable()
 		{
 			GameTime.Resume();
-			
 			InputManager.PlayerActions.Enable();
+			FirstPersonController controller = player.GetComponent<FirstPersonController>();
+			controller.enabled = true;
 			GameStateEvents.GameResumed?.Invoke();
 		}
 

@@ -35,8 +35,6 @@ public class SpawnItems : CustomBehaviour
     private void Start()
     {
         terr = GetComponent<Terrain>();
-        SpawnItemsNearTrees();
-        StartCoroutine(SpawnSwampItems());
     }
 
     
