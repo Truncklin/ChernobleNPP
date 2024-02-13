@@ -20,10 +20,6 @@ public class AnimationContoller : MonoBehaviour
    void Update()
    {
        move = SAI.move;
-        Debug.Log(move.x);
-        Debug.Log(move);
-        Debug.Log(move.y);
-        
         Animator anim = gameObject.GetComponent<Animator>();
         anim.SetFloat(X,move.x );
         anim.SetFloat(Y,move.y );
