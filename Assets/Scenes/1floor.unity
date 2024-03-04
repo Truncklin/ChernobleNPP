@@ -3036,6 +3036,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadingSlider: {fileID: 2061124604}
   i: 0
+  uiManager: {fileID: 0}
 --- !u!65 &239697251
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7414,7 +7415,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 896475424}
   m_LocalRotation: {x: -0.5, y: 0.5, z: 0.5, w: -0.5}
-  m_LocalPosition: {x: -0.10238671, y: -1.031, z: -1.291}
+  m_LocalPosition: {x: 0.023, y: -0.705, z: -1.291}
   m_LocalScale: {x: 0.37724572, y: 0.41317365, z: 0.05988026}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7435,6 +7436,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UI: {fileID: 18357238}
   _player: {fileID: 0}
+  playerSpawner: {fileID: 0}
 --- !u!65 &896475427
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7454,8 +7456,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.301315, y: 2.1551962, z: 19.42443}
-  m_Center: {x: -0.49227053, y: 0.23540138, z: 0.42829093}
+  m_Size: {x: 4.1211915, y: 2.1551962, z: 28.898806}
+  m_Center: {x: -1.4022088, y: 0.23540138, z: 0.68442565}
 --- !u!1 &915972330
 GameObject:
   m_ObjectHideFlags: 0

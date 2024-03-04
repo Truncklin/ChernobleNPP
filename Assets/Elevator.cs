@@ -14,9 +14,7 @@
         private Collider _elevatorCollider;
 
         [SerializeField]  private GameObject _player;
-        [Tooltip("Player spawner.")][SerializeField]
-        private PlayerSpawner playerSpawner;
-        
+
 
         private void OnTriggerStay(Collider other)
         {
@@ -52,15 +50,15 @@
         {
             if (SceneManager.GetActiveScene().buildIndex != 0)
             {
-                StartCoroutine(Teleportation()); 
+                if(SceneManager.GetActiveScene().buildIndex != 3) StartCoroutine(Teleportation()); 
             }
             Debug.Log("vent");
         }
 
         private IEnumerator Teleportation()
         {
-            SceneManager.LoadScene(0);
-            yield return new WaitUntil(() => SceneManager.GetSceneByBuildIndex(0).isLoaded);
+            SceneManager.LoadScene(3);
+            yield return new WaitUntil(() => SceneManager.GetSceneByBuildIndex(3).isLoaded);
         }
         private IEnumerator WaitScene(int i)
         {

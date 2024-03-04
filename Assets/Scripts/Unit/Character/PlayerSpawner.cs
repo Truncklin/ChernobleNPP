@@ -17,10 +17,9 @@ namespace Unit.Character
 			SaveData saveData = isNewGame ? 
 				new SaveData(spawn.transform.position, Quaternion.identity, 
 					100, new Dictionary<Item, uint>()) : SavePrefs.Load();
-			
+
 			character.SetActive(true);
 			virtualCamera.SetActive(false);
-			if(mainMenu.activeSelf == true) mainMenu.SetActive(false);
 			GameStateEvents.GameStarted?.Invoke();
 		}
 	}
