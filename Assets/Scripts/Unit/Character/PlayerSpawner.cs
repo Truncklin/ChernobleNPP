@@ -9,6 +9,7 @@ namespace Unit.Character
 	{
 		[SerializeField] private GameObject character;
 		[SerializeField] private GameObject virtualCamera;
+		[SerializeField] private GameObject mainMenu;
 
 		public void SpawnPlayer(bool isNewGame = true)
 		{
@@ -19,6 +20,7 @@ namespace Unit.Character
 			
 			character.SetActive(true);
 			virtualCamera.SetActive(false);
+			if(mainMenu.activeSelf == true) mainMenu.SetActive(false);
 			GameStateEvents.GameStarted?.Invoke();
 		}
 	}

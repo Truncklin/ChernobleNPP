@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LoadingSlider : MonoBehaviour
@@ -20,9 +21,9 @@ public class LoadingSlider : MonoBehaviour
         text.SetActive(true);
     }
 
-    public void SetSliderValue(Vector3 poztp)
+    public void SceneLoader(int i)
     {
-        _teleport.Teleportation(poztp);
+        SceneManager.LoadScene(i);
     }
 
     public void DisableText()

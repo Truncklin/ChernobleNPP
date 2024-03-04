@@ -1,4 +1,5 @@
 using System;
+using UI;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
@@ -6,9 +7,10 @@ using UnityEngine.UI;
 
 public class Teleport : MonoBehaviour
 {
-    [SerializeField] private GameObject pozTP;
-    [SerializeField]private LoadingSlider loadingSlider;
-
+    [SerializeField] private LoadingSlider loadingSlider;
+    [SerializeField] private int i;
+    [SerializeField] private GameObject uiManager;
+    
     private GameObject _player;
     private void OnTriggerStay(Collider other)
     {
@@ -19,7 +21,7 @@ public class Teleport : MonoBehaviour
             if (UnityEngine.Input.GetKeyDown(KeyCode.E))
             {
                 Debug.Log("Key E clicked");
-                loadingSlider.SetSliderValue(pozTP.transform.position);
+                loadingSlider.SceneLoader(i);
                 
             }
         }

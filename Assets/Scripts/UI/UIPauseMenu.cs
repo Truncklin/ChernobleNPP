@@ -1,4 +1,5 @@
-﻿using BaseClasses;
+﻿using System;
+using BaseClasses;
 using Input;
 using Inventory;
 using StarterAssets;
@@ -10,59 +11,43 @@ namespace UI
 {
 	public class UIPauseMenu : CustomBehaviour
 	{
-		[Tooltip("UI Manager.")][SerializeField]
-		private UIManager uiManager;
-		[Tooltip("Кнопка Сохранить и выйти")][SerializeField]
-		private Button saveAndExitButton;
-		[Tooltip("Кнопка Управление.")][SerializeField]
-		private Button instructionsButton;
 		[Tooltip("Персонаж")][SerializeField]
 		private GameObject player;
+		[Tooltip("floor")][SerializeField]
+		private Button firstFloor;
+		[Tooltip("floor")][SerializeField]
+		private Button secondFloor;
+		[Tooltip("floor")][SerializeField]
+		private Button vent;
 
-		private void Start()
-		{
-			saveAndExitButton.onClick.AddListener(SaveAndExit);
-			instructionsButton.onClick.AddListener(Instructions);
-		}
+		[SerializeField] private Elevator Elevator;
 
-		private void Instructions()
+
+		void Start()
 		{
-			uiManager.OpenTab(UIManager.EuiTabs.InstructionsTab);
+
 		}
 
 		protected override void OnEnable()
 		{
-			GameTime.Pause();
+			Cursor.visible = true;
+			Cursor.lockState = CursorLockMode.None;
+
 			
 			InputManager.PlayerActions.Disable();
-			FirstPersonController controller = player.GetComponent<FirstPersonController>();
-			controller.enabled = false;
 			GameStateEvents.GamePaused?.Invoke();
 		}
 
 		protected override void OnDisable()
 		{
-			GameTime.Resume();
+			Cursor.visible = false;
+			Cursor.lockState = CursorLockMode.Locked;
+			
+			
 			InputManager.PlayerActions.Enable();
-			FirstPersonController controller = player.GetComponent<FirstPersonController>();
-			controller.enabled = true;
 			GameStateEvents.GameResumed?.Invoke();
 		}
+		
 
-		private void SaveAndExit()
-		{
-			CharacterController characterController = GetCharacterController();
-			Transform playerTransform = characterController.transform;
-			
-			/*Debug.Log($"Сохранение. Позиция: {playerTransform.position}, " +
-			          $"Поворот: {playerTransform.rotation}, " +
-			          $"Здоровье: {characterController.Health.CurrentHealth}, " +
-			          $"Инвентарь: {InventoryController.GetItems()}");*/
-			
-			SavePrefs.Save(new SaveData(playerTransform.position, playerTransform.rotation, 
-				(uint)characterController.Health.CurrentHealth, InventoryController.GetItems()));
-			
-			Application.Quit();
-		}
 	}
 }
